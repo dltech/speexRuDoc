@@ -1,0 +1,110 @@
+9 Описание декодировщика Speex
+
+9.0.1 Узкополосные режимы
+
+Существуют 7 разных битрейтов определенных для Speex, варьирующихся в пределах от 250 бит/с до 24.6 кбит/с, хотя режимы ниже 5.9 кбит/с не должны использоваться для речи. Распределение битов для каждого режима описано в таблице [cap:bits-narrowband]. Каждый кадр начинается с ID режима закодированного 4 битами, которые допускают диапазон чисел от 0 до 15, хотя только первые 7 значений используются (остальные зарезервированы). Параметры перечисленные в таблице расположены в том порядке, в котором они следуют в битовом потоке. Все основанные на кадрах параметры расположены до субкадровых параметров. Параметры для определенного субкадра пакуются до упаковки следующего субкадра. Описание параметра “OL” означает что параметр это оценка без обратной связи, основанная на кадре целиком.
+
+\begin{center}\end{center}
+
+9.0.2 LSP декодирование
+
+В зависимости от режима, LSP параметры кодируются с использованием или 18 или 30 бит.
+
+Interpolation
+
+Safe margin
+
+9.0.3 Адаптивная кодовая таблица
+
+Для битрейтов в 8 кбит/с и выше, период шага кодируется для каждого подкадра. Настоящий период равен T=p_{i}+17
+  где p_{i}
+  is a value encoded with 7 bits and 17 corresponds to the minimum pitch. The maximum period is 144. At 5.95 kbit/s (mode 2), the pitch period is similarly encoded, but only once for the frame. Each sub-frame then has a 2-bit offset that is added to the pitch value of the frame. In that case, the pitch for each sub-frame is equal to T-1+offset
+ . For rates below 5.95 kbit/s, only the per-frame pitch is used and the pitch is constant for all sub-frames.
+
+Speex uses a 3-tap predictor for rates of 5.95 kbit/s and above. The three gain values are obtained from a 5-bit or a 7-bit codebook, depending on the mode.  
+
+9.0.4 Innovation codebook
+
+Split codebook, size and entries depend on bit-rate
+
+a 5-bit gain is encoder on a per-frame basis
+
+Depending on the mode, higher resolution per sub-frame
+
+innovation sub-vectors concatenated, gain applied
+
+9.0.5 Перцептуальное усиление
+
+Опционально, определяется реализацией. 
+
+9.0.6 Bit-stream definition
+
+This section defines the bit-stream that is transmitted on the wire. One speex packet consist of 1 frame header and 4 sub-frames:
+
+
+
+The frame header is variable length, depending on decoding mode and submode. The narrowband frame header is defined as follows:
+
+
+
+wb-bit: Wideband bit (1 bit) 0=narrowband, 1=wideband
+
+modeid: Mode identifier (4 bits)
+
+LSP: Line Spectral Pairs (0, 18 or 30 bits)
+
+OL-pitch: Open Loop Pitch (0 or 7 bits)
+
+OL-pitchgain: Open Loop Pitch Gain (0 or 4 bits)
+
+OL-ExcGain: Open Loop Excitation Gain (0 or 5 bits)
+
+...
+
+Each subframe is defined as follows:
+
+
+
+FinePitch: (0 or 7 bits)
+
+PitchGain: (0, 5, or 7 bits)
+
+Innovation Gain: (0, 1, 3 bits)
+
+Innovation VQ: (0-96 bits)
+
+...
+
+9.0.7 Пример декодировщика
+
+Данный раздел содержит некоторый исходный код показывающий, как основной декодировщик Speex может быть реализован. Пример декодировщика только для узкополосного субрежима 3, и без дополнительных функций как усиление, VBR, и т.д.
+
+...
+
+
+
+9.0.8 Lookup tables
+
+Декодировщик Speex включает в себя набор таблиц соответствия и кодовых таблиц, которые используются для конвертации значений между разными областями значений. Это включает в себя:
+
+- Excitation 10x16 (3200 bps)
+
+- Excitation 10x32 (4000 bps)
+
+- Excitation 20x32 (2000 bps)
+
+- Excitation 5x256 (12800 bps)
+
+- Excitation 5x64 (9600 bps)
+
+- Excitation 8x128 (7000 bps)
+
+- Кодовая таблица для for 3-tap pitch prediction gain (Normal and Low Bitrate)
+
+- Codebook for LSPs in narrowband CELP mode
+
+...
+
+The exact lookup tables are included here for reference.
+
+
