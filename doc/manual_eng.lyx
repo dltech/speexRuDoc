@@ -1,57 +1,31 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
 \begin_document
 \begin_header
 \textclass scrbook
 \use_default_options true
-\maintain_unincluded_children false
 \language english
-\language_package default
 \inputencoding auto
-\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
-\font_math auto
 \font_default_family default
-\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
-\default_output_format default
-\output_sync 0
-\bibtex_command default
-\index_command default
 \paperfontsize 10
 \spacing single
 \use_hyperref false
 \papersize letterpaper
 \use_geometry true
-\use_package amsmath 2
-\use_package amssymb 2
-\use_package cancel 1
-\use_package esint 2
-\use_package mathdots 0
-\use_package mathtools 1
-\use_package mhchem 1
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
+\use_amsmath 2
+\use_esint 2
 \cite_engine basic
-\cite_engine_type default
-\biblio_style plain
 \use_bibtopic false
-\use_indices false
 \paperorientation portrait
-\suppress_date false
-\justification true
-\use_refstyle 0
-\index Index
-\shortcut idx
-\color #008000
-\end_index
 \leftmargin 2cm
 \topmargin 2cm
 \rightmargin 2cm
@@ -59,26 +33,25 @@
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\paragraph_indentation default
+\defskip medskip
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\html_math_output 0
-\html_css_as_file 0
-\html_be_strict false
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Документация по Speex
+The Speex Manual
 \begin_inset Newline newline
 \end_inset
 
-Версия 1.2
+Version 1.2
 \end_layout
 
 \begin_layout Author
@@ -149,45 +122,44 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Chapter
-Введение в Speex
+Introduction to Speex
 \end_layout
 
 \begin_layout Standard
-Кодек Speex (
+The Speex codec (
 \family typewriter
 http://www.speex.org/
 \family default
-) сушествует из-за необходимости в речевом кодеке у которого открытый исходный
- код и который свободен от патентных отчислений.
- Это необходимые условия для применимости в любых открытых программных продуктах.
- Важно заметить, что Speex для речи в то время как Vorbis для музыки/звуков.
- К сожалению в отличии от остальных речевых кодеков, Speex разработан не
- для мобильных телефонов, а для пакетных сетей и различных VoIP приложений.
- Сжатие в файлы, безусловно, также поддерживается.
-\end_layout
-
-\begin_layout Standard
-Кодек Speex создан очень гибким и поддерживающим широкий диапазон качества
- речи и битрейта.
- Поддержка хорошего качества речи означает что Speex может кодировать широкополо
-сную речь (частота дискретизации 16 кГц) вдобавок к узкополосной речи (телефонно
-е качество, частота дискретизации 8 кГц).
+) exists because there is a need for a speech codec that is open-source
+ and free from software patent royalties.
+ These are essential conditions for being usable in any open-source software.
+ In essence, Speex is to speech what Vorbis is to audio/music.
+ Unlike many other speech codecs, Speex is not designed for mobile phones
+ but rather for packet networks and voice over IP (VoIP) applications.
+ File-based compression is of course also supported.
  
 \end_layout
 
 \begin_layout Standard
-Ориентированность на VoIP вместо мобильных телефонов означает что Speex
- стойкий к потере пакетов, но не к повреждению таковых.
- Это основывается на предположении что в VoIP пакеты либо приходят неизмененными
-, либо не приходят вовсе.
- Так как Speex нацелен на широкий диапазон устройств, он обладает скромной
- и регулируемой сложностью и малым размером кода.
+The Speex codec is designed to be very flexible and support a wide range
+ of speech quality and bit-rate.
+ Support for very good quality speech also means that Speex can encode wideband
+ speech (16 kHz sampling rate) in addition to narrowband speech (telephone
+ quality, 8 kHz sampling rate).
 \end_layout
 
 \begin_layout Standard
-Все цели разработки приводят к выбору техники кодирования CELP.
- Одна из основных причин состоит в том, что давно доказано что CELP
-\begin_inset Index idx
+Designing for VoIP instead of mobile phones means that Speex is robust to
+ lost packets, but not to corrupted ones.
+ This is based on the assumption that in VoIP, packets either arrive unaltered
+ or don't arrive at all.
+ Because Speex is targeted at a wide range of devices, it has modest (adjustable
+) complexity and a small memory footprint.
+\end_layout
+
+\begin_layout Standard
+All the design goals led to the choice of CELP
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -196,15 +168,16 @@ CELP
 
 \end_inset
 
- надежно работает и хорошо масштабируется при низких скоростях передачи
- данных (т.е.
- DoD CELP @ 4.8 kbps) и высоких скоростях (т.е.
+ as the encoding technique.
+ One of the main reasons is that CELP has long proved that it could work
+ reliably and scale well to both low bit-rates (e.g.
+ DoD CELP @ 4.8 kbps) and high bit-rates (e.g.
  G.728 @ 16 kbps).
  
 \end_layout
 
 \begin_layout Section
-Помощь
+Getting help
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Getting-help"
@@ -215,78 +188,77 @@ name "sec:Getting-help"
 \end_layout
 
 \begin_layout Standard
-Как и для большинства проектов с открытым исходным кодом существует множество
- способов получить помощь по Speex.
- Включая следующие:
+As for many open source projects, there are many ways to get help with Speex.
+ These include:
 \end_layout
 
 \begin_layout Itemize
-Данное руководство
+This manual
 \end_layout
 
 \begin_layout Itemize
-Остальная документация на сайте Speex (http://www.speex.org/)
+Other documentation on the Speex website (http://www.speex.org/)
 \end_layout
 
 \begin_layout Itemize
-Рассылка: Обсуждаются все связанные со Speex темы на speex-dev@xiph.org (не
- только для разработчиков)
+Mailing list: Discuss any Speex-related topic on speex-dev@xiph.org (not
+ just for developers)
 \end_layout
 
 \begin_layout Itemize
-IRC: Основной канал #speex на irc.freenode.net.
- Стоит заметить, что из-за разницы во времени, ождание ответа может занять
- некоторое время, пожалуйста будьте терпеливыми.
+IRC: The main channel is #speex on irc.freenode.net.
+ Note that due to time differences, it may take a while to get someone,
+ so please be patient.
 \end_layout
 
 \begin_layout Itemize
-Отправьте email автору лично на jean-marc.valin@usherbrooke.ca 
+Email the author privately at jean-marc.valin@usherbrooke.ca 
 \series bold
-только
+only
 \series default
- для личных вопросов, которые вы не хотите обсуждать публично.
+ for private/delicate topics you do not wish to discuss publicly.
 \end_layout
 
 \begin_layout Standard
-Перед тем как просить помощи (через рассылку или IRC), 
+Before asking for help (mailing list or IRC), 
 \series bold
-важно прочесть данное руководство
+it is important to first read this manual
 \series default
-.
- Как правило неприлично спрашивать о тех разделах, которые детально и ясно
- описаны в руководстве.
- С другой стороны это правильно (мы даже одобряем это) просить объяснений
- по поводу того что не отражено в данном руководстве.
- Данное руководство не покрывает всего что связано со Speex, так что каждый
- может задавать вопросы, присылать комментарии, спрашивать о функционале,
- или сообщите нам о том как вы используете Speex.
+ (OK, so if you made it here it's already a good sign).
+ It is generally considered rude to ask on a mailing list about topics that
+ are clearly detailed in the documentation.
+ On the other hand, it's perfectly OK (and encouraged) to ask for clarifications
+ about something covered in the manual.
+ This manual does not (yet) cover everything about Speex, so everyone is
+ encouraged to ask questions, send comments, feature requests, or just let
+ us know how Speex is being used.
+ 
 \end_layout
 
 \begin_layout Standard
-Существуют еще некоторые дополнительные указания связанные с рассылкой.
- Перед отправкой отчета об ошибке, настоятельно рекомендуется (если возможно)
- сначала проверить, где проявляется данная ошибка, используя утилиты speecenc
- и speexdec (см.
- раздел 
+Here are some additional guidelines related to the mailing list.
+ Before reporting bugs in Speex to the list, it is strongly recommended
+ (if possible) to first test whether these bugs can be reproduced using
+ the speexenc and speexdec (see Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Command-line-encoder/decoder"
 
 \end_inset
 
-).
- Ошибки связанные со сторонним кодом сложнее найти для обоих, и они очень
- часто вызваны ошибками не имеющими ничего общего со Speex.
+) command-line utilities.
+ Bugs reported based on 3rd party code are both harder to find and far too
+ often caused by errors that have nothing to do with Speex.
  
 \end_layout
 
 \begin_layout Section
-Об этом документе
+About this document
 \end_layout
 
 \begin_layout Standard
-Данный документ структурирован следующим образом.
- Раздел 
+This document is divided in the following way.
+ Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Feature-description"
@@ -311,7 +283,7 @@ reference "sec:Programming-with-Speex"
 \end_inset
 
  includes detailed instructions about programming using the libspeex
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -370,7 +342,7 @@ reference "sec:Speex-wideband-mode"
 \end_layout
 
 \begin_layout Chapter
-Описание кодека
+Codec description
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Feature-description"
@@ -381,23 +353,23 @@ name "sec:Feature-description"
 \end_layout
 
 \begin_layout Standard
-Этот раздел рассказывает о Speex и его функциях более детально.
+This section describes Speex and its features into more details.
 \end_layout
 
 \begin_layout Section
-Основные идеи
+Concepts
 \end_layout
 
 \begin_layout Standard
-До введения в основные функции Speex, здесь представлены некоторые идеи
- касаемые кодирования звука которые помогают лучше понять остальную информацию.
- Хотя некоторые являются общими понятиями обработки голоса и звука, остальные
- специфичны для Speex.
+Before introducing all the Speex features, here are some concepts in speech
+ coding that help better understand the rest of the manual.
+ Although some are general concepts in speech/audio processing, others are
+ specific to Speex.
 \end_layout
 
 \begin_layout Subsection*
-Частота дискретизации
-\begin_inset Index idx
+Sampling rate
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -410,52 +382,111 @@ sampling rate
 \end_layout
 
 \begin_layout Standard
-Частота дискретизации выраженная в герцах (Гц), это количество выборок ситгнала
- которые берутся за один период.
- Для частоты дискретизации равной 
+The sampling rate expressed in Hertz (Hz) is the number of samples taken
+ from a signal per second.
+ For a sampling rate of 
 \begin_inset Formula $F_{s}$
 \end_inset
 
- кГц, наибольшая частота, которая может быть представлена равна 
+ kHz, the highest frequency that can be represented is equal to 
 \begin_inset Formula $F_{s}/2$
 \end_inset
 
- кГц (
+ kHz (
 \begin_inset Formula $F_{s}/2$
 \end_inset
 
- также известна как частота Найквиста).
- Это фундаментальное свойство в обработке сигнала подтверждается теоремой
- Котельникова.
- Speex разработан для трех частот тдискретизации: 8 кГц, 16 кГц, and 32
- кГц.
- Он названы также как узкополосный, широкополосный, и ультраширокополосный
- соответственно.
+ is known as the Nyquist frequency).
+ This is a fundamental property in signal processing and is described by
+ the sampling theorem.
+ Speex is mainly designed for three different sampling rates: 8 kHz, 16
+ kHz, and 32 kHz.
+ These are respectively referred to as narrowband
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+narrowband
 \end_layout
 
-\begin_layout Subsection*
-Битрейт
+\end_inset
+
+, wideband
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+wideband
 \end_layout
 
-\begin_layout Standard
-При кодировании речевого сигнала, скорость передачи данных (битрейт) определяетс
-я как количество битов в единицу времени, необходимое для кодирования речи.
- Он измеряется в битах в секунду (б/с), или как правило в килобитах в секунду.
- Также важно различать между килобитами в секунду (к
-\series bold
-б
-\series default
-/с) и килобайтами в сеукнду (к
-\series bold
-Б
-\series default
-/с).
+\end_inset
+
+ and ultra-wideband
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+ultra-wideband
+\end_layout
+
+\end_inset
+
+.
  
 \end_layout
 
 \begin_layout Subsection*
-Качество
-\begin_inset Index idx
+Bit-rate
+\end_layout
+
+\begin_layout Standard
+When encoding a speech signal, the bit-rate is defined as the number of
+ bits per unit of time required to encode the speech.
+ It is measured in 
+\emph on
+bits per second
+\emph default
+ (bps), or generally 
+\emph on
+kilobits per second
+\emph default
+.
+ It is important to make the distinction between 
+\emph on
+kilo
+\series bold
+bits
+\series default
+\emph default
+ 
+\emph on
+per second
+\emph default
+ (k
+\series bold
+b
+\series default
+ps) and 
+\emph on
+kilo
+\series bold
+bytes
+\series default
+\emph default
+ 
+\emph on
+per second
+\emph default
+ (k
+\series bold
+B
+\series default
+ps).
+\end_layout
+
+\begin_layout Subsection*
+Quality
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -464,19 +495,18 @@ quality
 
 \end_inset
 
- (переменная)
+ (variable)
 \end_layout
 
 \begin_layout Standard
-Speex это кодек с потерями, это означает что он достигает сжатия ценой точности
- входного сигнала.
- В отличии от некоторых других речевых кодеков, здесь можно контролировать
- компромиUnlike some other speech codecs, it is possible to control the
- trade-off made between quality and bit-rate.
+Speex is a lossy codec, which means that it achieves compression at the
+ expense of fidelity of the input speech signal.
+ Unlike some other speech codecs, it is possible to control the trade-off
+ made between quality and bit-rate.
  The Speex encoding process is controlled most of the time by a quality
  parameter that ranges from 0 to 10.
  In constant bit-rate
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -492,7 +522,7 @@ constant bit-rate
 
 \begin_layout Subsection*
 Complexity
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -522,7 +552,7 @@ bzip2
  5 times higher than for complexity 1.
  In practice, the best trade-off is between complexity 2 and 4, though higher
  settings are often useful when encoding non-speech sounds like DTMF
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -536,7 +566,7 @@ DTMF
 
 \begin_layout Subsection*
 Variable Bit-Rate
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -573,7 +603,7 @@ difficulty
 
 \begin_layout Subsection*
 Average Bit-Rate
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -595,7 +625,7 @@ Average bit-rate solves one of the problems of VBR, as it dynamically adjusts
 
 \begin_layout Subsection*
 Voice Activity Detection
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -627,7 +657,7 @@ comfort noise generation
 
 \begin_layout Subsection*
 Discontinuous Transmission
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -648,7 +678,7 @@ Discontinuous transmission is an addition to VAD/VBR operation, that allows
 
 \begin_layout Subsection*
 Perceptual enhancement
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -679,7 +709,7 @@ sounds
 
 \begin_layout Subsection*
 Latency and algorithmic delay
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -720,7 +750,7 @@ The main characteristics of Speex can be summarized as follows:
 
 \begin_layout Itemize
 Free software/open-source
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -730,7 +760,7 @@ open-source
 \end_inset
 
 , patent
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -744,7 +774,7 @@ patent
 
 \begin_layout Itemize
 Integration of narrowband
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -754,7 +784,7 @@ narrowband
 \end_inset
 
  and wideband
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -772,7 +802,7 @@ Wide range of bit-rates available (from 2.15 kbps to 44 kbps)
 
 \begin_layout Itemize
 Dynamic bit-rate switching (AMR) and Variable Bit-Rate
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -786,7 +816,7 @@ variable bit-rate
 
 \begin_layout Itemize
 Voice Activity Detection
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -800,7 +830,7 @@ voice activity detection
 
 \begin_layout Itemize
 Variable complexity
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -967,7 +997,7 @@ end{center}
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Acoustic echo model
@@ -1083,7 +1113,7 @@ end{center}
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Integration of all the components in a VoIP client.
@@ -1168,7 +1198,7 @@ The options supported by the Speex configure script are:
 
 \begin_layout Description
 --enable-fixed-point
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -1193,7 +1223,7 @@ fixed-point
 
 \begin_layout Description
 --enable-fixed-point-debug Use only for debugging the fixed-point
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -1604,7 +1634,7 @@ speexdec
 
 \emph on
 speexenc
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -1797,7 +1827,7 @@ n Sampling rate for raw input
 
 \emph on
 speexdec
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -1900,12 +1930,12 @@ n Simulate n % random packet loss
 \end_layout
 
 \begin_layout Chapter
-Использование API кодека Speex (
+Using the Speex Codec API (
 \emph on
 libspeex
 \emph default
 
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -1925,43 +1955,40 @@ name "sec:Programming-with-Speex"
 \end_layout
 
 \begin_layout Standard
-Библиотека 
+The 
 \emph on
 libspeex
 \emph default
- содержит все функции для кодирования и декодирования речи с использованием
- кодека Speex.
- При подключении под UNIX, необходимо добавить 
+ library contains all the functions for encoding and decoding speech with
+ the Speex codec.
+ When linking on a UNIX system, one must add 
 \emph on
 -lspeex -lm
 \emph default
- в командную строку компилятора.
- Одна важная вещь которую необходимо знать это то что вызовы функций libspeex
- могут быть сделаны повторно, 
+ to the compiler command line.
+ One important thing to know is that 
 \series bold
-но при этом данная библиотека не ориентирована на много поточное исполнение
+libspeex calls are reentrant, but not thread-safe
 \series default
 .
- Это означает что нужно быть остороным при вызове из нескольких потоков,
- но 
+ That means that it is fine to use calls from many threads, but 
 \series bold
-вызовы использующие одинаковое состояние из нескольких потоков должны быть
- защищены мьютексами
+calls using the same state from multiple threads must be protected by mutexes
 \series default
 .
- Примеры программ также могут быть найдены в приложении 
+ Examples of code can also be found in Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Sample-code"
 
 \end_inset
 
- и полная документация по API включена в раздел Documentation на сайте Speex
- (http://www.speex.org/).
+ and the complete API documentation is included in the Documentation section
+ of the Speex website (http://www.speex.org/).
 \end_layout
 
 \begin_layout Section
-Кодирование
+Encoding
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Encoding"
@@ -1972,7 +1999,7 @@ name "sub:Encoding"
 \end_layout
 
 \begin_layout Standard
-Для того чтобы кодировать речь с использованием Speex, во-первых необходимо:
+In order to encode speech using Speex, one first needs to:
 \end_layout
 
 \begin_layout Standard
@@ -1987,8 +2014,8 @@ status open
 
 \end_inset
 
-Далее в программе должна быть объявлена структура упаковщика битов Speex
- вместе с переменной состояния кодировщика Speex:
+Then in the code, a Speex bit-packing struct must be declared, along with
+ a Speex encoder state:
 \begin_inset listings
 inline false
 status open
@@ -2005,7 +2032,7 @@ void *enc_state;
 
 \end_inset
 
-Во вторых, для инициализации:
+The two are initialized by:
 \begin_inset listings
 inline false
 status open
@@ -2026,22 +2053,26 @@ enc_state = speex_encoder_init(&speex_nb_mode);
 \end_layout
 
 \begin_layout Standard
-Для широкополосного режима, 
+For wideband coding, 
 \emph on
 speex_nb_mode
 \emph default
- должна быть заменена 
+ will be replaced by 
 \emph on
 speex_wb_mode
 \emph default
 .
- В большинстве случаев, вам необходимо знать размер кадра при используемой
- вами частоте дискретизации.
- Вы можете получить это значение через переменную 
+ In most cases, you will need to know the frame size used at the sampling
+ rate you are using.
+ You can get that value in the 
 \emph on
 frame_size
 \emph default
- (выраженную в выборках, не байтах) с помощью:
+ variable (expressed in 
+\series bold
+samples
+\series default
+, not bytes) with:
 \end_layout
 
 \begin_layout Standard
@@ -2060,16 +2091,15 @@ speex_encoder_ctl(enc_state,SPEEX_GET_FRAME_SIZE,&frame_size);
 \end_layout
 
 \begin_layout Standard
-На практике, 
+In practice, 
 \emph on
 frame_size
 \emph default
- должен соответсвовать 20 миллисекундам при использовании частоты дискретизации
- в 8, 16, или 32 кГц.
- Существует множество параметров, которые должны быть установлены для кодировщик
-а Speex, но наиболее полезный из них это параметр качества, который контролирует
- соотношение между качеством и битрейтом.
- Он устанавливается с помощью:
+ will correspond to 20 ms when using 8, 16, or 32 kHz sampling rate.
+ There are many parameters that can be set for the Speex encoder, but the
+ most useful one is the quality parameter that controls the quality vs bit-rate
+ tradeoff.
+ This is set by:
 \end_layout
 
 \begin_layout Standard
@@ -2084,23 +2114,24 @@ speex_encoder_ctl(enc_state,SPEEX_SET_QUALITY,&quality);
 
 \end_inset
 
-где 
+where 
 \emph on
 quality
 \emph default
- это целое число между 0 и 10 (включительно).
- Соотношение между качеством и битрейтом показано на рисунке 
+ is an integer value ranging from 0 to 10 (inclusively).
+ The mapping between quality and bit-rate is described in Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cap:quality_vs_bps"
 
 \end_inset
 
- для узкополосного режима.
+ for narrowband.
 \end_layout
 
 \begin_layout Standard
-После того как инициализация произведена, для кажого входящего кадра:
+Once the initialization is done, for every input frame:
 \end_layout
 
 \begin_layout Standard
@@ -2129,11 +2160,11 @@ nbBytes = speex_bits_write(&bits, byte_ptr, MAX_NB_BYTES);
 \end_layout
 
 \begin_layout Standard
-где 
+where 
 \emph on
 input_frame
 \emph default
- это 
+ is a 
 \emph on
 (
 \emph default
@@ -2141,66 +2172,66 @@ short
 \emph on
 *)
 \emph default
- указатель на начало речевого кадра, 
+ pointing to the beginning of a speech frame, 
 \emph on
 byte_ptr
 \emph default
- это 
+ is a 
 \emph on
 (char *)
 \emph default
- это указатель на начало закодированного кадра, 
+ where the encoded frame will be written, 
 \emph on
 MAX_NB_BYTES
 \emph default
- это максимальное число байт которые могут быть записаны в 
+ is the maximum number of bytes that can be written to 
 \emph on
 byte_ptr
 \emph default
- не вызывая переполнения стека и 
+ without causing an overflow and 
 \emph on
 nbBytes
 \emph default
- это число байт которое записано в 
+ is the number of bytes actually written to 
 \emph on
 byte_ptr
 \emph default
- (размер закодированного кадра в байтах).
- До вызова speex_bits_write, можно определить количество байт, которые будут
- записаны, с помощью вызова 
+ (the encoded size in bytes).
+ Before calling speex_bits_write, it is possible to find the number of bytes
+ that need to be written by calling 
 \family typewriter
 speex_bits_nbytes(&bits)
 \family default
-, которая возвращает количество байт.
+, which returns a number of bytes.
 \end_layout
 
 \begin_layout Standard
-Возможно использование функции 
+It is still possible to use the 
 \emph on
 speex_encode()
 \emph default
-, которая использует 
+ function, which takes a 
 \emph on
 (float *)
 \emph default
- для звука.
- Хотя это может сделать порт на платформу без модуля обработки операций
- с плавающей точкой (например ARM) более сложным.
- Внутренне 
+ for the audio.
+ However, this would make an eventual port to an FPU-less platform (like
+ ARM) more complicated.
+ Internally, 
 \emph on
 speex_encode()
 \emph default
- и 
+ and 
 \emph on
 speex_encode_int()
 \emph default
- работают одинаково.
- Использование кодировщиком целочисленного варианта или варианта с плавающей
- точкойопределяется только флагами при компиляции, не на уровне API.
+ are processed in the same way.
+ Whether the encoder uses the fixed-point version is only decided by the
+ compile-time flags, not at the API level.
 \end_layout
 
 \begin_layout Standard
-После того как вы выполнили кодирование, освободите ресурсы через:
+After you're done with the encoding, free all resources with:
 \end_layout
 
 \begin_layout Standard
@@ -2224,11 +2255,12 @@ speex_encoder_destroy(enc_state);
 \end_layout
 
 \begin_layout Standard
-Вобщем тог все про кодировщик.
+That's about it for the encoder.
+ 
 \end_layout
 
 \begin_layout Section
-Декодирование
+Decoding
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Decoding"
@@ -2239,7 +2271,7 @@ name "sub:Decoding"
 \end_layout
 
 \begin_layout Standard
-В порядке декодирования речи с использованием Speex, сначала вам нужно:
+In order to decode speech using Speex, you first need to:
 \begin_inset listings
 inline false
 status open
@@ -2251,7 +2283,7 @@ status open
 
 \end_inset
 
-Также необходимо объявить структуру
+You also need to declare a Speex bit-packing struct
 \begin_inset listings
 inline false
 status open
@@ -2263,7 +2295,7 @@ SpeexBits bits;
 
 \end_inset
 
-и переменную состояния декодера 
+and a Speex decoder state
 \begin_inset listings
 inline false
 status open
@@ -2275,7 +2307,7 @@ void *dec_state;
 
 \end_inset
 
-Они инициализируются с помощью:
+The two are initialized by:
 \begin_inset listings
 inline false
 status open
@@ -2296,22 +2328,25 @@ dec_state = speex_decoder_init(&speex_nb_mode);
 \end_layout
 
 \begin_layout Standard
-Для широкополосного режима, 
+For wideband decoding, 
 \emph on
 speex_nb_mode
 \emph default
- должна быть заменена 
+ will be replaced by 
 \emph on
 speex_wb_mode
 \emph default
 .
- В большинстве случаев, вам необходимо знать размер кадра при используемой
- вами частоте дискретизации.
- Вы можете получить это значение через переменную 
+ If you need to obtain the size of the frames that will be used by the decoder,
+ you can get that value in the 
 \emph on
 frame_size
 \emph default
- (выраженную в выборках, не байтах) с помощью:
+ variable (expressed in 
+\series bold
+samples
+\series default
+, not bytes) with:
 \end_layout
 
 \begin_layout Standard
@@ -2330,9 +2365,9 @@ speex_decoder_ctl(dec_state, SPEEX_GET_FRAME_SIZE, &frame_size);
 \end_layout
 
 \begin_layout Standard
-Также существует параметр, который должен быть установлен для декодировщика:
- используется ли перцепционный усилитель или нет.
- Он должен быть установлен с помощью: 
+There is also a parameter that can be set for the decoder: whether or not
+ to use a perceptual enhancer.
+ This can be set by: 
 \end_layout
 
 \begin_layout Standard
@@ -2351,17 +2386,16 @@ speex_decoder_ctl(dec_state, SPEEX_SET_ENH, &enh);
 \end_layout
 
 \begin_layout Standard
-где 
+where 
 \emph on
 enh
 \emph default
- целое значение равное 0 для выключения усилителя и 1 для включения.
- Для 1.2-beta1, по умолчанию он включен.
+ is an int with value 0 to have the enhancer disabled and 1 to have it enabled.
+ As of 1.2-beta1, the default is now to enable the enhancer.
 \end_layout
 
 \begin_layout Standard
-Опять, после того как инициализация декодера завершена, для каждого входящего
- кадра:
+Again, once the decoder initialization is done, for every input frame:
 \end_layout
 
 \begin_layout Standard
@@ -2381,40 +2415,40 @@ speex_decode_int(dec_state, &bits, output_frame);
 
 \end_inset
 
-где input_bytes это 
+where input_bytes is a 
 \emph on
 (char *)
 \emph default
- содержащий потоковые данные для одного кадра, 
+ containing the bit-stream data received for a frame, 
 \emph on
 nbBytes
 \emph default
- размер (в байтах) этого потока, и 
+ is the size (in bytes) of that bit-stream, and 
 \emph on
 output_frame
 \emph default
- это 
+ is a 
 \emph on
 (short *)
 \emph default
- которое указывает на область, в которой декодированные речевые кадры будут
- записаны.
- Значение NULL в качестве второго аргумента показывает что у нас нету данных
- для текущего кадра.
- Когда кадр теряется, декодер Speex пытается угадать правильный сигнал.
+ and points to the area where the decoded speech frame will be written.
+ A NULL value as the second argument indicates that we don't have the bits
+ for the current frame.
+ When a frame is lost, the Speex decoder will do its best to "guess" the
+ correct signal.
 \end_layout
 
 \begin_layout Standard
-Как и для кодировщика, функция the 
+As for the encoder, the 
 \emph on
 speex_decode()
 \emph default
- также может быть использована, с 
+ function can still be used, with a 
 \emph on
 (float *)
 \emph default
- как выходными данными для звука.
- После того как вы завершили декодирование, освободите все ресурсы с помощью:
+ as the output for the audio.
+ After you're done with the decoding, free all resources with:
 \end_layout
 
 \begin_layout Standard
@@ -2438,7 +2472,7 @@ speex_decoder_destroy(dec_state);
 \end_layout
 
 \begin_layout Section
-Опеции кодека (speex_*_ctl)
+Codec Options (speex_*_ctl)
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Codec-Options"
@@ -2578,7 +2612,7 @@ SPEEX_SET_ENH
 \end_inset
 
  Set perceptual enhancer
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -2745,7 +2779,7 @@ SPEEX_GET_VBR
 \end_inset
 
  Get variable bit-rate
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -2904,7 +2938,7 @@ SPEEX_SET_VAD
 \end_inset
 
  Set voice activity detection
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -2954,7 +2988,7 @@ SPEEX_SET_DTX
 \end_inset
 
  Set discontinuous transmission
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -3004,7 +3038,7 @@ SPEEX_SET_ABR
 \end_inset
 
  Set average bit-rate
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -3233,7 +3267,7 @@ ptr
 
 \begin_layout Section
 Packing and in-band signalling
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -3326,7 +3360,7 @@ begin{center}
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features>
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -3852,7 +3886,7 @@ end{center}
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 In-band signalling codes
@@ -3933,7 +3967,7 @@ name "sub:Preprocessor"
 \begin_layout Standard
 \noindent
 In order to use the Speex preprocessor
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -4402,7 +4436,7 @@ name "sub:Echo-Cancellation"
 
 \begin_layout Standard
 The Speex library now includes an echo cancellation
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -4412,7 +4446,7 @@ echo cancellation
 \end_inset
 
  algorithm suitable for Acoustic Echo Cancellation
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -4474,7 +4508,7 @@ filter_length
 tail length
 \shape default
 
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -5142,13 +5176,12 @@ remaining=64
 \end_layout
 
 \begin_layout Section
-Устройство передискретизации
+Resampler
 \end_layout
 
 \begin_layout Standard
-Speex вклчает в себя модули передискретизации.
- Для того чтобы воспользоваться перекодировщиком, необходимо подключить
- его заголовочный файл:
+Speex includes a resampling modules.
+ To make use of the resampler, it is necessary to include its header file:
 \end_layout
 
 \begin_layout Standard
@@ -5487,16 +5520,24 @@ speex_resampler_destroy()
 \end_layout
 
 \begin_layout Section
-Циклический буфер
+Ring Buffer
 \end_layout
 
 \begin_layout Standard
-В некоторых случаях необходимо согласование с компонентами которые используют
- разные размеры блоков.
- Например, возможно что звуковая карта не поддерживает чтение/запись блоками
- по 20 мс или иногда, сложные соотношения передискретизации означают что
- блоки не всегда имеют одинаковое время.
- В таких случаях необходимо сохранить данные используя циклический буфер.
+In some cases, it is necessary to interface components that use different
+ block sizes.
+ For example, it is possible that the soundcard does not support reading/writing
+ in blocks of 20
+\begin_inset space ~
+\end_inset
+
+ms or sometimes, complicated resampling ratios mean that the blocks don't
+ always have the same time.
+ In thoses cases, it is often necessary to buffer a bit of audio using a
+ ring buffer.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -5504,8 +5545,8 @@ speex_resampler_destroy()
 \end_layout
 
 \begin_layout Chapter
-Форматы и стандарты
-\begin_inset Index idx
+Formats and standards
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -5525,19 +5566,26 @@ name "sec:Formats-and-standards"
 \end_layout
 
 \begin_layout Standard
-Speex может кодировать речь в обеих узкополосном и широкополосном режимах
- и обеспечивая разные битрейты.
- Хотя не все функции необходимы для поддержки в определенной реализации
- или определеном устройстве.
- Для того чтобы называться совместимым со Speex, реализация должна поддерживать
- основной набор функций.
+Speex can encode speech in both narrowband and wideband and provides different
+ bit-rates.
+ However, not all features need to be supported by a certain implementation
+ or device.
+ In order to be called 
+\begin_inset Quotes eld
+\end_inset
+
+Speex compatible
+\begin_inset Quotes erd
+\end_inset
+
+ (whatever that means), an implementation must implement at least a basic
+ set of features.
 \end_layout
 
 \begin_layout Standard
-Как минимум все узкополосные режимы работы ДОЛЖНЫ быть поддерживаемы декодировщи
-ком.
- Это включает в себя декодирование широкополосного потока узколполосным
- декоировщиком 
+At the minimum, all narrowband modes of operation MUST be supported at the
+ decoder.
+ This includes the decoding of a wideband bit-stream by the narrowband decoder
 \begin_inset Foot
 status collapsed
 
@@ -5549,23 +5597,22 @@ The wideband bit-stream contains an embedded narrowband bit-stream which
 \end_inset
 
 .
- Таким образом, декодировщик ОБЯЗАН кодировать узкополосный поток, и МОЖЕТ
- либо декодировать все широкополосные режимы, либо декодировать встроенную
- узкополосную часть всех режимов (которое включает в себя игнорирование
- битов высоких частот).
+ If present, a wideband decoder MUST be able to decode a narrowband stream,
+ and MAY either be able to decode all wideband modes or be able to decode
+ the embedded narrowband part of all modes (which includes ignoring the
+ high-band bits).
 \end_layout
 
 \begin_layout Standard
-Для кодировщиков, хотя бы один узкополосный или широкополосный режим ДОЛЖЕН
- поддерживатья.
- Основная причиной по которой все режимы кодирования могут не подерживаться
- состоит в том, что некоторые платформы не обработать сложный кодирующий
- алгоритм в некоторых режимах.
+For encoders, at least one narrowband or wideband mode MUST be supported.
+ The main reason why all encoding modes do not have to be supported is that
+ some platforms may not be able to handle the complexity of encoding in
+ some modes.
 \end_layout
 
 \begin_layout Section
 RTP
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -5617,7 +5664,7 @@ audio/speex
 
 \begin_layout Section
 Ogg
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -5757,7 +5804,7 @@ begin{center}
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="16" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features>
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -5766,7 +5813,7 @@ begin{center}
 \begin_inset Text
 
 \begin_layout Plain Layout
-Поле
+Field
 \end_layout
 
 \end_inset
@@ -5775,7 +5822,7 @@ begin{center}
 \begin_inset Text
 
 \begin_layout Plain Layout
-Тип данных
+Type
 \end_layout
 
 \end_inset
@@ -5784,7 +5831,7 @@ begin{center}
 \begin_inset Text
 
 \begin_layout Plain Layout
-Размер
+Size
 \end_layout
 
 \end_inset
@@ -6246,7 +6293,7 @@ end{center}
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Ogg/Speex header packet
@@ -6286,8 +6333,8 @@ clearpage
 \end_layout
 
 \begin_layout Chapter
-Введение в CELP 
-\begin_inset Index idx
+Introduction to CELP Coding
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -6310,16 +6357,14 @@ name "sec:Introduction-to-CELP"
 \align center
 
 \emph on
-Не вмешивайтесь в дела полюсов, ибо непостижимы они и стремятся покинуть
- единичную окружность.
+Do not meddle in the affairs of poles, for they are subtle and quick to
+ leave the unit circle.
 \end_layout
 
 \begin_layout Standard
-Speex основан на CELP, что означает линейное предсказание с мультикодовым
- управлением.
- В этом разделе предполагается введение в основные принципы CELP, так что,
- если вы знакомы с CELP, вы можете совершенно спокойно пропустить этот раздел
- 
+Speex is based on CELP, which stands for Code Excited Linear Prediction.
+ This section attempts to introduce the principles behind CELP, so if you
+ are already familiar with CELP, you can safely skip to section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Speex-narrowband-mode"
@@ -6327,25 +6372,24 @@ reference "sec:Speex-narrowband-mode"
 \end_inset
 
 .
- Алгоритм CELP базируется на трех основных идеях:
+ The CELP technique is based on three ideas:
 \end_layout
 
 \begin_layout Enumerate
-Использование модели линейного предсказания в качестве модели голосового
- тракта
+The use of a linear prediction (LP) model to model the vocal tract
 \end_layout
 
 \begin_layout Enumerate
-Использование (адаптивной или фиксированной) кодовой таблицы выступающей
- в качестве источника модели линейного предсказаия (ЛП)
+The use of (adaptive and fixed) codebook entries as input (excitation) of
+ the LP model
 \end_layout
 
 \begin_layout Enumerate
-Поиск осуществляется в замкнутом цикле в 
+The search performed in closed-loop in a 
 \begin_inset Quotes eld
 \end_inset
 
-перцепционно взвешенном домене
+perceptually weighted domain
 \begin_inset Quotes erd
 \end_inset
 
@@ -6353,37 +6397,38 @@ reference "sec:Speex-narrowband-mode"
 \end_layout
 
 \begin_layout Standard
-Данный раздел описывает основные идеи, используемые в CELP.
- Раздел по прежнему в стадии разработки.
+This section describes the basic ideas behind CELP.
+ This is still a work in progress.
 \end_layout
 
 \begin_layout Section
-Модель предсказания речи "источник-фильтр"
+Source-Filter Model of Speech Prediction
 \end_layout
 
 \begin_layout Standard
-Данная модель подразумевает что голосовые связки являются источниками спектральн
-о плоского звука, и что голосовой тракт играет роль фильтра по отношению
- к спектральной форме различных звуков речи.
- Пока еще аппроксимация является широко используемой моделью в кодировании
- речи по причине ее простоты.
- Ее использование является также причиной, по которой большинство речевых
- кодеков (в том числе и Speex) плохо работают при кодировании музыки.
- Различные фонемы могут быть выделены по их возбудителю (источнику) и спектральн
-ой форме (фильтру).
- У гласных звуков источник сигнала является периодическим и может быть аппроксим
-рован  импульсной последовательностью во временной плоскости или гармониками,
- расположенными через определенные промежутки, в частотной области.
- С другой стороны, глухие согласные (такие как "с", "ш", "ф") имеют источник
- сигнала который похож на белый гауссовский шум.
- Также звонкие согласные (такие как "з", "в") имеют возбудитель сигнала,
- состоящий из  гармонической и шумовой части.
+The source-filter model of speech production assumes that the vocal cords
+ are the source of spectrally flat sound (the excitation signal), and that
+ the vocal tract acts as a filter to spectrally shape the various sounds
+ of speech.
+ While still an approximation, the model is widely used in speech coding
+ because of its simplicity.Its use is also the reason why most speech codecs
+ (Speex included) perform badly on music signals.
+ The different phonemes can be distinguished by their excitation (source)
+ and spectral shape (filter).
+ Voiced sounds (e.g.
+ vowels) have an excitation signal that is periodic and that can be approximated
+ by an impulse train in the time domain or by regularly-spaced harmonics
+ in the frequency domain.
+ On the other hand, fricatives (such as the "s", "sh" and "f" sounds) have
+ an excitation signal that is similar to white Gaussian noise.
+ So called voice fricatives (such as "z" and "v") have excitation signal
+ composed of an harmonic part and a noisy part.
 \end_layout
 
 \begin_layout Standard
-Модель источник-фильтр обычно связана с использованием линейного предсказания.
- Модель CELP основана на модели источник-фильтр, как это можно увидеть на
- CELP декодере показанном на диаграмме ниже 
+The source-filter model is usually tied with the use of Linear prediction.
+ The CELP model is based on source-filter model, as can be seen from the
+ CELP decoder illustrated in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:The-CELP-model"
@@ -6438,10 +6483,10 @@ end{center}
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
-Модель синтеза речи CELP (декодер)
+The CELP model of speech synthesis (decoder)
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:The-CELP-model"
@@ -6462,8 +6507,8 @@ name "fig:The-CELP-model"
 \end_layout
 
 \begin_layout Section
-Коэффициенты линейного предсказания (LPC)
-\begin_inset Index idx
+Linear Prediction Coefficients (LPC)
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -6476,62 +6521,33 @@ linear prediction
 \end_layout
 
 \begin_layout Standard
-Линейное предсказание лежит в основе множества техник кодирования речи,
- включая CELP.
- Идея заключается в том что сигнал 
+Linear prediction is at the base of many speech coding techniques, including
+ CELP.
+ The idea behind it is to predict the signal 
 \begin_inset Formula $x[n]$
 \end_inset
 
- предсказывается с использованием линейной комбинации его выборок: 
+ using a linear combination of its past samples:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\[
-y[n]=\sum_{i=1}^{N}a_{i}x[n-i]
-\]
+\begin_inset Formula \[
+y[n]=\sum_{i=1}^{N}a_{i}x[n-i]\]
 
 \end_inset
 
- где 
+where 
 \begin_inset Formula $y[n]$
 \end_inset
 
- линейное предсказание
+ is the linear prediction of 
 \begin_inset Formula $x[n]$
 \end_inset
 
 .
- Таким образом, ошибка предсказания представлена как:
-\begin_inset Formula 
-\[
-e[n]=x[n]-y[n]=x[n]-\sum_{i=1}^{N}a_{i}x[n-i]
-\]
-
-\end_inset
-
-Цель линейного предсказания в том, чтобы найти наилучшие коэффициенты предсказан
-ия 
-\begin_inset Formula $a_{i}$
-\end_inset
-
-, при которых значение функции среднеквадратичной ошибки является наименьшей:
-\begin_inset Formula 
-\[
-E=\sum_{n=0}^{L-1}\left[e[n]\right]^{2}=\sum_{n=0}^{L-1}\left[x[n]-\sum_{i=1}^{N}a_{i}x[n-i]\right]^{2}
-\]
-
-\end_inset
-
-Это может быть осуществлено путем зануления производных 
-\begin_inset Formula $\frac{\partial E}{\partial a_{i}}$
-\end_inset
-
- :
-\begin_inset Formula 
-\[
-\frac{\partial E}{\partial a_{i}}=\frac{\partial}{\partial a_{i}}\sum_{n=0}^{L-1}\left[x[n]-\sum_{i=1}^{N}a_{i}x[n-i]\right]^{2}=0
-\]
+ The prediction error is thus given by:
+\begin_inset Formula \[
+e[n]=x[n]-y[n]=x[n]-\sum_{i=1}^{N}a_{i}x[n-i]\]
 
 \end_inset
 
@@ -6539,54 +6555,73 @@ E=\sum_{n=0}^{L-1}\left[e[n]\right]^{2}=\sum_{n=0}^{L-1}\left[x[n]-\sum_{i=1}^{N
 \end_layout
 
 \begin_layout Standard
-Для фильтра порядка 
-\begin_inset Formula $N$
-\end_inset
-
- коэффициенты 
+The goal of the LPC analysis is to find the best prediction coefficients
+ 
 \begin_inset Formula $a_{i}$
 \end_inset
 
- могут быть найдены с помощью решения системы линейных уравнений 
-\begin_inset Formula $\mathbf{Ra}=\mathbf{r}$
+ which minimize the quadratic error function:
+\begin_inset Formula \[
+E=\sum_{n=0}^{L-1}\left[e[n]\right]^{2}=\sum_{n=0}^{L-1}\left[x[n]-\sum_{i=1}^{N}a_{i}x[n-i]\right]^{2}\]
+
 \end_inset
 
- размерностью 
+That can be done by making all derivatives 
+\begin_inset Formula $\frac{\partial E}{\partial a_{i}}$
+\end_inset
+
+ equal to zero:
+\begin_inset Formula \[
+\frac{\partial E}{\partial a_{i}}=\frac{\partial}{\partial a_{i}}\sum_{n=0}^{L-1}\left[x[n]-\sum_{i=1}^{N}a_{i}x[n-i]\right]^{2}=0\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For an order 
+\begin_inset Formula $N$
+\end_inset
+
+ filter, the filter coefficients 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ are found by solving the system 
 \begin_inset Formula $N\times N$
 \end_inset
 
- , где
-\begin_inset Formula 
-\[
+ linear system 
+\begin_inset Formula $\mathbf{Ra}=\mathbf{r}$
+\end_inset
+
+, where
+\begin_inset Formula \[
 \mathbf{R}=\left[\begin{array}{cccc}
 R(0) & R(1) & \cdots & R(N-1)\\
 R(1) & R(0) & \cdots & R(N-2)\\
 \vdots & \vdots & \ddots & \vdots\\
-R(N-1) & R(N-2) & \cdots & R(0)
-\end{array}\right]
-\]
+R(N-1) & R(N-2) & \cdots & R(0)\end{array}\right]\]
 
 \end_inset
 
 
-\begin_inset Formula 
-\[
+\begin_inset Formula \[
 \mathbf{r}=\left[\begin{array}{c}
 R(1)\\
 R(2)\\
 \vdots\\
-R(N)
-\end{array}\right]
-\]
+R(N)\end{array}\right]\]
 
 \end_inset
 
-с 
+with 
 \begin_inset Formula $R(m)$
 \end_inset
 
-, автокорреляцией
-\begin_inset Index idx
+, the auto-correlation
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -6595,18 +6630,16 @@ auto-correlation
 
 \end_inset
 
- сигнала 
+ of the signal 
 \begin_inset Formula $x[n]$
 \end_inset
 
-, вычисляемой по следующей формуле:
+, computed as:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\[
-R(m)=\sum_{i=0}^{N-1}x[i]x[i-m]
-\]
+\begin_inset Formula \[
+R(m)=\sum_{i=0}^{N-1}x[i]x[i-m]\]
 
 \end_inset
 
@@ -6614,13 +6647,12 @@ R(m)=\sum_{i=0}^{N-1}x[i]x[i-m]
 \end_layout
 
 \begin_layout Standard
-Так как 
+Because 
 \begin_inset Formula $\mathbf{R}$
 \end_inset
 
- самосопряженная матрица Тёплица, для решения данной системы уравнений может
- быть использован алгоритм Левинсона-Дарбина 
-\begin_inset Index idx
+ is Hermitian Toeplitz, the Levinson-Durbin
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -6629,40 +6661,39 @@ Levinson-Durbin
 
 \end_inset
 
-, решающий эту задачу за 
+ algorithm can be used, making the solution to the problem 
 \begin_inset Formula $\mathcal{O}\left(N^{2}\right)$
 \end_inset
 
- итераций вместо 
+ instead of 
 \begin_inset Formula $\mathcal{O}\left(N^{3}\right)$
 \end_inset
 
 .
- Также может быть доказано что все корни 
+ Also, it can be proven that all the roots of 
 \begin_inset Formula $A(z)$
 \end_inset
 
- находятся в пределах единичного круга, это означает что 
+ are within the unit circle, which means that 
 \begin_inset Formula $1/A(z)$
 \end_inset
 
- всегда стабилен.
- Но это в теории, на практике это не всегда является справедливым по причине
- конечной точности, существуют две часто используемых техники, подтверждающие
- стабильность фильтра.
- Во первых, можно умножить 
+ is always stable.
+ This is in theory; in practice because of finite precision, there are two
+ commonly used techniques to make sure we have a stable filter.
+ First, we multiply 
 \begin_inset Formula $R(0)$
 \end_inset
 
- на число немного большее единицы (такое как 1.0001), что, в свою очередь,
- эквивалентно добавлению шума к сигналу.
- Также мы можем применить оконную фильтрацию к автокорреляции, что эквивалентно
- фильтрации в частотной области, уменьшающей острые резонансы.
+ by a number slightly above one (such as 1.0001), which is equivalent to
+ adding noise to the signal.
+ Also, we can apply a window to the auto-correlation, which is equivalent
+ to filtering in the frequency domain, reducing sharp resonances.
 \end_layout
 
 \begin_layout Section
-Предсказание тембра
-\begin_inset Index idx
+Pitch Prediction
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -6675,42 +6706,36 @@ pitch
 \end_layout
 
 \begin_layout Standard
-В течении звонких сегментов голосовой сигнал периодический, таким образом,
- можно использовать это свойство путем аппроксимации сигнала возбуждения
+During voiced segments, the speech signal is periodic, so it is possible
+ to take advantage of that property by approximating the excitation signal
  
 \begin_inset Formula $e[n]$
 \end_inset
 
-, представляя его как усиленный в 
-\begin_inset Formula $\beta$
-\end_inset
-
- раз предыдущий сигнал:
+ by a gain times the past of the excitation:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\[
-e[n]\simeq p[n]=\beta e[n-T]\ ,
-\]
+\begin_inset Formula \[
+e[n]\simeq p[n]=\beta e[n-T]\ ,\]
 
 \end_inset
 
-где 
+where 
 \begin_inset Formula $T$
 \end_inset
 
- период основного тона, 
+ is the pitch period, 
 \begin_inset Formula $\beta$
 \end_inset
 
- усиление основного тона.
- Мы называем это долгосрочным предсказанием если источник предсказывается
- как 
+ is the pitch gain.
+ We call that long-term prediction since the excitation is predicted from
+ 
 \begin_inset Formula $e[n-T]$
 \end_inset
 
- с 
+ with 
 \begin_inset Formula $T\gg N$
 \end_inset
 
@@ -6718,36 +6743,37 @@ e[n]\simeq p[n]=\beta e[n-T]\ ,
 \end_layout
 
 \begin_layout Section
-Инновационная кодовая таблица
+Innovation Codebook
 \end_layout
 
 \begin_layout Standard
-Последний сигнал возбуждения 
+The final excitation 
 \begin_inset Formula $e[n]$
 \end_inset
 
- будет являтся суммой предсказанного тона и инновационного сигнала 
+ will be the sum of the pitch prediction and an 
+\emph on
+innovation
+\emph default
+ signal 
 \begin_inset Formula $c[n]$
 \end_inset
 
- взятого из фиксированной кодовой таблицы, отсюда и название линейное предсказан
-ие с 
-\shape italic
-мультикодовым
-\shape default
- управлением.
- Последнее выражение имеет вид:
+ taken from a fixed codebook, hence the name 
+\emph on
+Code
+\emph default
+ Excited Linear Prediction.
+ The final excitation is given by
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\[
-e[n]=p[n]+c[n]=\beta e[n-T]+c[n]\ .
-\]
+\begin_inset Formula \[
+e[n]=p[n]+c[n]=\beta e[n-T]+c[n]\ .\]
 
 \end_inset
 
-Квантование 
+The quantization of 
 \begin_inset Formula $c[n]$
 \end_inset
 
@@ -6763,10 +6789,8 @@ z
 \end_inset
 
  as
-\begin_inset Formula 
-\[
-X(z)=\frac{C(z)}{A(z)\left(1-\beta z^{-T}\right)}
-\]
+\begin_inset Formula \[
+X(z)=\frac{C(z)}{A(z)\left(1-\beta z^{-T}\right)}\]
 
 \end_inset
 
@@ -6774,8 +6798,8 @@ X(z)=\frac{C(z)}{A(z)\left(1-\beta z^{-T}\right)}
 \end_layout
 
 \begin_layout Section
-Взвешивание шума
-\begin_inset Index idx
+Noise Weighting
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -6785,7 +6809,7 @@ error weighting
 \end_inset
 
 
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -6798,65 +6822,75 @@ analysis-by-synthesis
 \end_layout
 
 \begin_layout Standard
-Большинство современных звуковых кодеков пытается сформировать шум так,
- чтобы он отображался, в основном, в тех частотных областях, в которых его
- не сможет распознать человеческое ухо.
- Для того чтобы максимизировать качество речи, CELP кодеки минимизируют
- среднеквадратичную ошибку в перцепционно взвешенном домене.
- Это означает что перцепционно взвешенный шумовой фильтр 
+Most (if not all) modern audio codecs attempt to 
+\begin_inset Quotes eld
+\end_inset
+
+shape
+\begin_inset Quotes erd
+\end_inset
+
+ the noise so that it appears mostly in the frequency regions where the
+ ear cannot detect it.
+ For example, the ear is more tolerant to noise in parts of the spectrum
+ that are louder and 
+\emph on
+vice versa
+\emph default
+.
+ In order to maximize speech quality, CELP codecs minimize the mean square
+ of the error (noise) in the perceptually weighted domain.
+ This means that a perceptual noise weighting filter 
 \begin_inset Formula $W(z)$
 \end_inset
 
- применяется к сигналу ошибки в кодировщике.
- В большинстве CELP кодеков 
+ is applied to the error signal in the encoder.
+ In most CELP codecs, 
 \begin_inset Formula $W(z)$
 \end_inset
 
- это взвешивающий фильтр, полученный из коэффициентов линейного предсказания,
- как правило с помощью расширения полосы частот.
- Предположим что огибающая спектра представлена синтезирующим фильтром 
+ is a pole-zero weighting filter derived from the linear prediction coefficients
+ (LPC), generally using bandwidth expansion.
+ Let the spectral envelope be represented by the synthesis filter 
 \begin_inset Formula $1/A(z)$
 \end_inset
 
-, тогда в CELP кодеках полученный взвешивающий фильтр шумов обычно представлен
- как: 
-\begin_inset Formula 
-\begin{equation}
-W(z)=\frac{A(z/\gamma_{1})}{A(z/\gamma_{2})}\ ,\label{eq:gamma-weighting}
-\end{equation}
+, CELP codecs typically derive the noise weighting filter as 
+\begin_inset Formula \begin{equation}
+W(z)=\frac{A(z/\gamma_{1})}{A(z/\gamma_{2})}\ ,\label{eq:gamma-weighting}\end{equation}
 
 \end_inset
 
-где 
+where 
 \begin_inset Formula $\gamma_{1}=0.9$
 \end_inset
 
- и 
+ and 
 \begin_inset Formula $\gamma_{2}=0.6$
 \end_inset
 
- в базовой реализации Speex.
- Если фильтр 
+ in the Speex reference implementation.
+ If a filter 
 \begin_inset Formula $A(z)$
 \end_inset
 
- имеет комплексные полюса 
+ has (complex) poles at 
 \begin_inset Formula $p_{i}$
 \end_inset
 
- на 
+ in the 
 \begin_inset Formula $z$
 \end_inset
 
--плосости, фильтр 
+-plane, the filter 
 \begin_inset Formula $A(z/\gamma)$
 \end_inset
 
- будет иметь полюса 
+ will have its poles at 
 \begin_inset Formula $p'_{i}=\gamma p_{i}$
 \end_inset
 
-, таким обобразом добиваясь более плоского варианта 
+, making it a flatter version of 
 \begin_inset Formula $A(z)$
 \end_inset
 
@@ -6864,30 +6898,30 @@ W(z)=\frac{A(z/\gamma_{1})}{A(z/\gamma_{2})}\ ,\label{eq:gamma-weighting}
 \end_layout
 
 \begin_layout Standard
-Взвешивающий фильтр применяется к сигналу ошибок для оптимизации поиска
- по кодовой таблице при анализе через синтез (Analysis-by-Synthesis или
- AbS).
- Это приводит к определенному результату в спектре шума, который стремится
- к 
+The weighting filter is applied to the error signal used to optimize the
+ codebook search through analysis-by-synthesis (AbS).
+ This results in a spectral shape of the noise that tends towards 
 \begin_inset Formula $1/W(z)$
 \end_inset
 
 .
- Пока простота модели является важной причиной успеха CELP, остается что
- 
+ While the simplicity of the model has been an important reason for the
+ success of CELP, it remains that 
 \begin_inset Formula $W(z)$
 \end_inset
 
- это очень грубая аппроксимация для функции перцепционно оптимального взвешивани
-я шума.
- Рисунок 
+ is a very rough approximation for the perceptually optimal noise weighting
+ function.
+ Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cap:Standard-noise-shaping"
 
 \end_inset
 
- показывает сглаживание шума, полученное с помошью выражения 
+ illustrates the noise shaping that results from Eq.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:gamma-weighting"
@@ -6895,15 +6929,15 @@ reference "eq:gamma-weighting"
 \end_inset
 
 .
- Во всем данном руководстве под 
+ Throughout this paper, we refer to 
 \begin_inset Formula $W(z)$
 \end_inset
 
- мы подразумеваем взвешивающий фильтр шума и под 
+ as the noise weighting filter and to 
 \begin_inset Formula $1/W(z)$
 \end_inset
 
- мы полдразумеваем формирующий шумовой фильтр (или кривая).
+ as the noise shaping filter (or curve).
 \end_layout
 
 \begin_layout Standard
@@ -6950,7 +6984,7 @@ end{center}
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Standard noise shaping in CELP.
@@ -6975,28 +7009,33 @@ name "cap:Standard-noise-shaping"
 \end_layout
 
 \begin_layout Section
-Анализ через синтез
+Analysis-by-Synthesis
 \end_layout
 
 \begin_layout Standard
-Один из основных принципов CELP назван анализом через синтез (AbS), это
- означает что кодирование (анализ) осуществляется с помощью прецептуальной
- оптимизации декодированного (синтез) сигнала в замкнутом цикле.
- В теории лучший CELP поток должен быть произведен путем проверки всех возможных
- комбинаций битов и выбора одной, которая воспроизведет декодированный сигнал,
- звучащий наилушим образом.
- Очевидно что это не реализуемо на практике по двум причинам: требуемая
- сложность намного выще возможностей доступного на данный момент аппаратного
- обеспечения и критерий выбора наилучшего звучания определяется слушателем.
+One of the main principles behind CELP is called Analysis-by-Synthesis (AbS),
+ meaning that the encoding (analysis) is performed by perceptually optimising
+ the decoded (synthesis) signal in a closed loop.
+ In theory, the best CELP stream would be produced by trying all possible
+ bit combinations and selecting the one that produces the best-sounding
+ decoded signal.
+ This is obviously not possible in practice for two reasons: the required
+ complexity is beyond any currently available hardware and the 
+\begin_inset Quotes eld
+\end_inset
+
+best sounding
+\begin_inset Quotes erd
+\end_inset
+
+ selection criterion implies a human listener.
  
 \end_layout
 
 \begin_layout Standard
-С целью достижения кодирования в реальном времени с использованием ограниченных
- вычислительных ресурсов, оптимизация In order to achieve real-time encoding
- using limited computing resources, the CELP optimisation is broken down
- into smaller, more manageable, sequential searches using the perceptual
- weighting function described earlier.
+In order to achieve real-time encoding using limited computing resources,
+ the CELP optimisation is broken down into smaller, more manageable, sequential
+ searches using the perceptual weighting function described earlier.
 \end_layout
 
 \begin_layout Standard
@@ -7076,7 +7115,7 @@ begin{center}
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="11">
-<features rotate="0" tabularvalignment="middle">
+<features>
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -8321,7 +8360,7 @@ end{center}
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Bit allocation for narrowband modes
@@ -8438,12 +8477,12 @@ This section defines the bit-stream that is transmitted on the wire.
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -8506,13 +8545,13 @@ The frame header is variable length, depending on decoding mode and submode.
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="6">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -8611,11 +8650,11 @@ Each subframe is defined as follows:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="4">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -8874,7 +8913,7 @@ name "sec:Speex-narrowband-mode"
 \end_inset
 
 
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -8919,7 +8958,7 @@ sub-vector fixed (innovation) codebooks
 
 \begin_layout Section
 Whole-Frame Analysis
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -8957,7 +8996,7 @@ Linear prediction analysis is performed once per frame using an asymmetric
  Hamming window centered on the fourth sub-frame.
  Because linear prediction coefficients (LPC) are not robust to quantization,
  they are first converted to line spectral pairs (LSP)
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -9040,7 +9079,7 @@ end{center}
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Frame open-loop analysis
@@ -9111,7 +9150,7 @@ end{center}
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Analysis-by-synthesis closed-loop optimization on a sub-frame.
@@ -9154,10 +9193,8 @@ reference "cap:Sub-frame-AbS"
 \end_inset
 
  can thus be expressed as:
-\begin_inset Formula 
-\begin{equation}
-e_{a}[n]=g_{0}e[n-T-1]+g_{1}e[n-T]+g_{2}e[n-T+1]\label{eq:adaptive-3tap}
-\end{equation}
+\begin_inset Formula \begin{equation}
+e_{a}[n]=g_{0}e[n-T-1]+g_{1}e[n-T]+g_{2}e[n-T+1]\label{eq:adaptive-3tap}\end{equation}
 
 \end_inset
 
@@ -9251,7 +9288,7 @@ Bit-rates
 
 \begin_layout Standard
 So far, no MOS (Mean Opinion Score
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -9277,7 +9314,7 @@ reference "cap:quality_vs_bps"
  Note that the complexity is only approximate (within 0.5 mflops and using
  the lowest complexity setting).
  Decoding requires approximately 0.5 mflops
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -9312,7 +9349,7 @@ begin{center}
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features>
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -9342,7 +9379,7 @@ Quality
 
 \begin_layout Plain Layout
 Bit-rate
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -9361,7 +9398,7 @@ bit-rate
 
 \begin_layout Plain Layout
 mflops
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -10158,7 +10195,7 @@ end{center}
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Quality versus bit-rate
@@ -10183,7 +10220,7 @@ name "cap:quality_vs_bps"
 
 \begin_layout Section
 Perceptual enhancement
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -10214,10 +10251,8 @@ This part of the codec only applies to the decoder and can even be changed
 \end_inset
 
  is replaced by an enhanced filter:
-\begin_inset Formula 
-\[
-S'(z)=\frac{A\left(z/a_{2}\right)A\left(z/a_{3}\right)}{A\left(z\right)A\left(z/a_{1}\right)}
-\]
+\begin_inset Formula \[
+S'(z)=\frac{A\left(z/a_{2}\right)A\left(z/a_{3}\right)}{A\left(z\right)A\left(z/a_{1}\right)}\]
 
 \end_inset
 
@@ -10252,7 +10287,7 @@ where
 
 \begin_layout Chapter
 Speex wideband mode (sub-band CELP)
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -10285,7 +10320,7 @@ irror
 f
 \emph default
 ilter
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -10415,7 +10450,7 @@ begin{center}
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="7">
-<features rotate="0" tabularvalignment="middle">
+<features>
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -10899,7 +10934,7 @@ end{center}
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Bit allocation for high-band in wideband mode
@@ -10945,7 +10980,7 @@ begin{center}
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features>
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -10964,7 +10999,7 @@ Mode/Quality
 
 \begin_layout Plain Layout
 Bit-rate
-\begin_inset Index idx
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
@@ -11328,7 +11363,7 @@ end{center}
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Quality versus bit-rate for the wideband encoder
@@ -12040,7 +12075,6 @@ n.
 \begin_layout Standard
 \begin_inset CommandInset index_print
 LatexCommand printindex
-type "idx"
 
 \end_inset
 

@@ -24,6 +24,9 @@ int main(int argc, char **argv)
    tmp=8;
    speex_encoder_ctl(state, SPEEX_SET_QUALITY, &tmp);
 
+   if (argc < 2)
+      return 1;
+
    inFile = argv[1];
    fin = fopen(inFile, "r");
 
@@ -52,9 +55,9 @@ int main(int argc, char **argv)
       fwrite(&nbBytes, sizeof(int), 1, stdout);
       /*Write the compressed data*/
       fwrite(cbits, 1, nbBytes, stdout);
-      
+
    }
-   
+
    /*Destroy the encoder state*/
    speex_encoder_destroy(state);
    /*Destroy the bit-packing struct*/
